@@ -87,3 +87,5 @@ gem "sass-rails"
 gem "view_component"
 
 gem "stimulus_reflex", "= 3.5.0.pre8"
+
+gem "tailwindcss-rails", "~> 2.0"
