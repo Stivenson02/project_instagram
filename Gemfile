@@ -51,6 +51,11 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "pry-rails"
+  gem "capybara"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "rspec-expectations"
 end
 
 group :development do
@@ -66,7 +71,19 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "faker", "~> 2.20"
+gem "devise"
+gem "slim-rails"
+gem "haml"
+gem "hpricot"
+gem "ruby_parser"
+gem "html2haml"
+gem "haml2slim"
+gem "sass-rails"
+gem "view_component"
+
+gem "stimulus_reflex", "= 3.5.0.pre8"

@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @publication.name
+
+p
+  strong Description:
+  = @publication.description
+
+p
+  strong Type:
+  = @publication.type
+
+p
+  strong User:
+  = @publication.user
+
+=> link_to 'Edit', edit_publication_path(@publication)
+'|
+=< link_to 'Back', publications_path
