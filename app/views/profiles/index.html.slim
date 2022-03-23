@@ -1,0 +1,107 @@
+==render "publications/nav", profile:@profile
+
+.bg-gray-100.h-auto.px-48
+  .flex.md:flex-row-reverse.flex-wrap
+    .w-full.p-4.text-center.mt-12 class="md:w-3/4"
+      .text-left.pl-4.pt-3
+        span.text-base.text-gray-700.text-2xl.mr-2 =@profile.nil? ? "": @profile.username
+        span.text-base.font-semibold.text-gray-700.mr-2
+          - unless @profile.nil?
+            = link_to 'Edit profile', edit_profile_path(@profile), class: "bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded"
+          -else
+            = link_to 'Add profile', new_profile_path, class: "bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded"
+
+      .text-left.pl-4.pt-3
+        span.text-base.font-semibold.text-gray-700.mr-2
+          b 220
+          | posts
+        span.text-base.font-semibold.text-gray-700.mr-2
+          b 114
+          | followers
+        span.text-base.font-semibold.text-gray-700
+          b 200
+          | following
+      .text-left.pl-4.pt-3
+        span.text-lg.font-bold.text-gray-700.mr-2 Information
+      .text-left.pl-4.pt-3
+        p.text-base.font-medium.text-blue-700.mr-2  =@profile.nil? ? "": @profile.phone_number
+        p.text-base.font-medium.text-gray-700.mr-2 =@profile.nil? ? "": @profile.description
+    .w-full.p-4.text-center class="md:w-1/4"
+      .w-full.relative.text-center.mt-16 class="md:w-3/4"
+        button#user-menu.flex.rounded-full aria-haspopup="true" aria-label=("User menu")
+          -unless @profile.nil?
+            img.h-40.w-40.rounded-full alt="" src="#{url_for(@profile.avatar)}" /
+          -else
+            img.h-40.w-40.rounded-full alt="" src="data:image/png;base64,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"
+
+  /! status show icon
+  .inline-flex.ml-36.mt-16
+    .flex-1.text-center.px-4.py-2.m-2
+      .relative.shadow-xl.mx-auto.h-24.w-24.-my-12.border-white.rounded-full.overflow-hidden.border-4
+        img.object-cover.w-full.h-full src="https://images.unsplash.com/photo-1502164980785-f8aa41d53611?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" /
+      h1.pt-16.text-base.font-semibold.text-gray-900 Fun
+    .flex-1.text-center.px-4.py-2.m-2
+      .relative.shadow-xl.mx-auto.h-24.w-24.-my-12.border-white.rounded-full.overflow-hidden.border-4
+        img.object-cover.w-full.h-full src="https://images.unsplash.com/photo-1456415333674-42b11b9f5b7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" /
+      h1.pt-16.text-base.font-semibold.text-gray-900 Travel
+    .flex-1.text-center.px-4.py-2.m-2
+      .relative.shadow-xl.mx-auto.h-24.w-24.-my-12.border-white.rounded-full.overflow-hidden.border-4
+        img.object-cover.w-full.h-full src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80" /
+      h1.pt-16.text-base.font-semibold.text-gray-900 Food
+    .flex-1.text-center.px-4.py-2.m-2
+      .relative.shadow-xl.mx-auto.h-24.w-24.-my-12.border-white.rounded-full.overflow-hidden.border-4
+        img.object-cover.w-full.h-full src="https://images.unsplash.com/photo-1516834474-48c0abc2a902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80" /
+      h1.pt-16.text-base.font-semibold.text-gray-900 Sketch
+    .flex-1.text-center.px-4.py-2.m-2
+      .relative.shadow-xl.mx-auto.h-24.w-24.-my-12.border-white.rounded-full.overflow-hidden.border-4
+        img.object-cover.w-full.h-full src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
+      h1.pt-16.text-base.font-semibold.text-gray-900 My Work
+  hr.border-gray-500.mt-6/
+
+/Options post
+.bg-gray-100.h-auto
+  .flex.flex-row.justify-center.mr-16
+    .flex.text-gray-700.text-center.py-2.m-2.pr-5
+      .flex.inline-flex
+        button.border-transparent.text-gray-800.rounded-full.hover:text-blue-600.focus:outline-none.focus:text-gray-600 aria-label="Notifications"
+          svg.h-6.w-6 fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24")
+            path d=("M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z")
+      .flex.inline-flex.ml-2.mt-1
+        h3.text-sm.font-medium.text-gray-800.mr-2 POSTS
+    .flex.text-gray-700.text-center.py-2.m-2.pr-5
+      .flex.inline-flex
+        button.border-transparent.text-gray-600.rounded-full.hover:text-blue-600.focus:outline-none.focus:text-gray-600 aria-label="Notifications"
+          svg.h-6.w-6 fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24")
+            path d=("M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z")
+      .flex.inline-flex.ml-2.mt-1
+        h3.text-sm.font-medium.text-gray-700.mr-2 REEL
+    .flex.text-gray-700.text-center.py-2.m-2.pr-5
+      .flex.inline-flex
+        a href="/publications/new"
+          button.border-transparent.text-gray-600.rounded-full.hover:text-blue-600.focus:outline-none.focus:text-gray-600 aria-label="Notifications"
+            svg.h-6.w-6 fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24")
+              path d=("M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z")
+      a href="/publications/new"
+        .flex.inline-flex.ml-2.mt-1
+          h3.text-sm.font-medium.text-gray-700.mr-2 NEW
+/ <div class="w-full">
+/   <% if notice.present? %>
+/     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+/   <% end %>
+/
+/   <div class="flex justify-between items-center">
+/     <h1 class="font-bold text-4xl">Profiles</h1>
+/
+/     <% if current_user.profile.nil? %>
+/       <%= link_to 'New profile', new_profile_path %>
+/     <% end %>
+/
+/   </div>
+/
+/   <div id="profiles" class="min-w-full">
+/     <% unless @profile.nil? %>
+/       <%= render "profile", profile:@profile %>
+/     <% end %>
+/   </div>
+/ </div>
+

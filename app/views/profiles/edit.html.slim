@@ -1,0 +1,15 @@
+.container.mx-auto
+  .flex.justify-center.px-3.my-3
+    .w-full.flex class=("xl:w-3/4 lg:w-11/12")
+      .w-full.h-auto.bg-gray-400.hidden.lg:block.bg-cover.rounded-l-lg class="lg:w-5/12"
+        img.h-full.w-full alt="" src="#{url_for(@profile.avatar)}"
+      .w-full.bg-white.p-5.rounded-lg.lg:rounded-l-none class="lg:w-7/12"
+        h3.font-bold.pt-4.text-2xl.text-center Add Information
+        =render "form", profile: @profile
+        .px-2.pt-2.pb-2.mb-2.bg-white.rounded.text-center
+          =link_to 'Back to profile', profiles_path, class: "px-8 py-2 font-bold text-white bg-gray-300 rounded-full hover:bg-gray-500 focus:outline-none focus:shadow-outline"
+
+/   <%#= link_to "Back to profiles", profiles_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+
+

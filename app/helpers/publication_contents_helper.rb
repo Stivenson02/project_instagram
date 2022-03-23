@@ -1,0 +1,2 @@
+module PublicationContentsHelper
+end
