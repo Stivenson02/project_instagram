@@ -11,13 +11,13 @@ class Publication < ApplicationRecord
   ]
 
   def post?
-    publication_type == 'complete'
+    publication_type == 'post'
   end
   def reel?
-    publication_type == 'in-progress'
+    publication_type == 'reel'
   end
   def history?
-    publication_type == 'not-started'
+    publication_type == 'history'
   end
 
 end
