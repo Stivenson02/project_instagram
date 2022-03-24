@@ -5,17 +5,22 @@
       ul
         - @publication.errors.full_messages.each do |message|
           li = message
+  .md:flex.items-center.mt-12
+    .w-full.flex.flex-col class="md:w-1/2"
+      = f.label :name,"Title Post", class:"font-semibold leading-none mr-2"
+      = f.text_field :name, class:"leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
+    .w-full.flex.flex-col.md:ml-6.md:mt-0.mt-4 class="md:w-1/2"
+      = f.label :publication_type, class:"font-semibold leading-none mr-2 mb-4"
+      = f.select :publication_type, Publication::TYPE_OPTIONS, class:"leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
+  .md:flex.items-center.mt-8
+    .w-full.flex.flex-col
+      = f.label :description, class: "font-semibold leading-none"
+      = f.text_area :description, class: "h-40 text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
+  .flex.justify-center
+    = f.submit class: "mt-6 w-1/2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :type
-    = f.text_field :type
-  .field
-    = f.label :user
-    = f.text_field :user
-  .actions = f.submit
+
+
+
+
+

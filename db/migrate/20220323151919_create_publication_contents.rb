@@ -4,7 +4,7 @@ class CreatePublicationContents < ActiveRecord::Migration[7.0]
       t.string :file
       t.text :description
       t.integer :order
-      t.string :type
+      t.string :content_type
       t.references :publication, null: false, foreign_key: true
 
       t.timestamps
