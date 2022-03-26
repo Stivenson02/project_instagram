@@ -1,0 +1,65 @@
+#publication_content_form
+  -if @publication.publication_contents.count < 9
+    =form_for publication_content do |f|
+      .md:flex.items-center.mt-12
+        .w-full.flex.flex-col class="md:w-1/2"
+          = f.label :file, class: "font-semibold leading-none"
+          = f.file_field :file
+        .w-full.flex.flex-col.md:ml-6.md:mt-0.mt-4 class="md:w-1/2"
+          = f.label :content_type, class: "font-semibold leading-none mb-4"
+          = f.select :content_type, PublicationContent::TYPE_OPTIONS, class: "leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
+      .md:flex.items-center.mt-8
+        .w-full.flex.flex-col
+          = f.label :description, class: "font-semibold leading-none"
+          = f.text_field :description, class: "text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
+      .div.hidden
+        = f.label :publication_id
+        = f.text_field :publication_id, value: @publication.id
+      .flex.justify-center
+          = f.submit  class: "mt-6 w-1/2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+
+
+
+
+/ <%= form_with(model: publication_content, class: "contents") do |form| %>
+/   <% if publication_content.errors.any? %>
+/     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+/       <h2><%= pluralize(publication_content.errors.count, "error") %> prohibited this publication_content from being saved:</h2>
+/
+/       <ul>
+/         <% publication_content.errors.each do |error| %>
+/           <li><%= error.full_message %></li>
+/         <% end %>
+/       </ul>
+/     </div>
+/   <% end %>
+/
+/   <div class="my-5">
+/     <%= form.label :file %>
+/     <%= form.file_field :file, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+/   </div>
+/
+/   <div class="my-5">
+/     <%= form.label :description %>
+/     <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+/   </div>
+/
+/   <div class="my-5">
+/     <%= form.label :order %>
+/     <%= form.number_field :order, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+/   </div>
+/
+/   <div class="my-5">
+/     <%= form.label :content_type %>
+/     <%= form.text_field :content_type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+/   </div>
+/
+/   <div class="my-5">
+/     <%= form.label :publication_id %>
+/     <%= form.text_field :publication_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+/   </div>
+/
+/   <div class="inline">
+/     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+/   </div>
+/ <% end %>

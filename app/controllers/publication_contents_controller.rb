@@ -21,15 +21,39 @@ class PublicationContentsController < ApplicationController
 
   # POST /publication_contents or /publication_contents.json
   def create
-    @publication_content = PublicationContent.new(publication_content_params)
+    @publication = Publication.find(params[:publication_content][:publication_id])
+    order = @publication.publication_contents.count + 1
+    save_content = false
+    if @publication.post? && order < 11
+      save_content = true
+    elsif @publication.reel? && order < 2
+      save_content = true
+    elsif @publication.history? && order < 2
+      save_content = true
+    end
 
-    respond_to do |format|
-      if @publication_content.save
-        format.html { redirect_to publication_content_url(@publication_content), notice: "Publication content was successfully created." }
-        format.json { render :show, status: :created, location: @publication_content }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @publication_content.errors, status: :unprocessable_entity }
+    if save_content
+      @publication_content = PublicationContent.new(publication_content_params)
+      @publication_content.order=order
+      respond_to do |format|
+        if @publication_content.save
+          format.turbo_stream do
+            render turbo_stream:[
+              turbo_stream.update('publication_content_form',
+                                  partial: "publication_contents/form",
+                                  locals:{publication_content: PublicationContent.new}),
+              turbo_stream.prepend('publication_contents',
+                                   partial: "publication_contents/publication_content",
+                                   locals:{publication_content: @publication_content})
+            ]
+          end
+
+          format.html { redirect_to edit_publication_url(@publication_content.publication), notice: "Publication content was successfully created." }
+          format.json { render :show, status: :created, location: @publication_content.publication }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @publication_content.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -49,22 +73,31 @@ class PublicationContentsController < ApplicationController
 
   # DELETE /publication_contents/1 or /publication_contents/1.json
   def destroy
+    @publication = @publication_content.publication
     @publication_content.destroy
-
     respond_to do |format|
-      format.html { redirect_to publication_contents_url, notice: "Publication content was successfully destroyed." }
+      format.turbo_stream do
+        render turbo_stream:[
+          turbo_stream.remove(@publication_content),
+          turbo_stream.update('publication_content_form',
+                              partial: "publication_contents/form",
+                              locals:{publication_content: PublicationContent.new}),
+        ]
+      end
+      format.html { redirect_to edit_publication_url(@publication_content.publication), notice: "Publication content was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_publication_content
-      @publication_content = PublicationContent.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def publication_content_params
-      params.require(:publication_content).permit(:file, :description, :order, :type, :publication_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_publication_content
+    @publication_content = PublicationContent.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def publication_content_params
+    params.require(:publication_content).permit(:file, :description, :content_type, :publication_id)
+  end
 end

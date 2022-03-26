@@ -5,3 +5,14 @@ div
       p.text-3xl.font-bold.leading-7.text-center Add Content
       == render 'form'
 
+      .bg-gray-100.mt-8
+        .flex.bg-gray-100
+          .w-full.text-center.mt-12.bg-gray-100
+
+        .grid.grid-cols-3.gap-4#publication_contents
+          - @publication.publication_contents.order(order: :asc).each do |publication_content|
+            ==render publication_content
+      div data-controller="postform"
+        #publication_contents_counter
+          == render(FormContentComponent.new(publication_content: @publication.publication_contents, publication: @publication))
+

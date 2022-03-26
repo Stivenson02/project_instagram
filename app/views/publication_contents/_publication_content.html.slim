@@ -1,0 +1,41 @@
+div id="#{dom_id publication_content }" class="mx-5 max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+  img.h-60.w-full.object-cover.object-top src="#{url_for(publication_content.file)}" /
+  .text-center
+    =publication_content.description
+    =publication_content.order
+  div
+    =button_to 'Destroy', publication_content_path(publication_content), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium"
+
+
+      / <div id="<%=  %>">
+/   <p class="my-5">
+/     <strong class="block font-medium mb-1">File:</strong>
+/     <%= publication_content.file %>
+/   </p>
+/
+/   <p class="my-5">
+/     <strong class="block font-medium mb-1">Description:</strong>
+/     <%= publication_content.description %>
+/   </p>
+/
+/   <p class="my-5">
+/     <strong class="block font-medium mb-1">Order:</strong>
+/     <%= publication_content.order %>
+/   </p>
+/
+/   <p class="my-5">
+/     <strong class="block font-medium mb-1">Type:</strong>
+/     <%= publication_content.content_type %>
+/   </p>
+/
+/   <p class="my-5">
+/     <strong class="block font-medium mb-1">Publication:</strong>
+/     <%= publication_content.publication_id %>
+/   </p>
+/
+/   <% if action_name != "show" %>
+/     <%= link_to "Show this publication content", publication_content, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+/     <%= link_to 'Edit this publication content', edit_publication_content_path(publication_content), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+/     <hr class="mt-6">
+/   <% end %>
+/ </div>

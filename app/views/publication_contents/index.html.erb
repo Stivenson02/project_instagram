@@ -8,7 +8,12 @@
     <%= link_to 'New publication content', new_publication_content_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="publication_contents" class="min-w-full">
-    <%= render @publication_contents %>
+  <div  class="bg-gray-100" >
+    <div class="flex bg-gray-100">
+      <div class=".grid.grid-cols-3.gap-4">
+        <%= render @publication_contents %>
+      </div>
+    </div>
+
   </div>
 </div>
