@@ -1,1 +1,22 @@
-==render 'publication_contents/form',  publication_content: new
+.mt-4.text-red-500.font-bold.text-center
+  #notice
+#publication_content_form
+  -if show_form
+    =form_for publication_content do |f|
+      .md:flex.items-center.mt-12
+        .w-full.flex.flex-col class="md:w-1/2"
+          = f.label :file, class: "font-semibold leading-none"
+          = f.file_field :file
+        .w-full.flex.flex-col.md:ml-6.md:mt-0.mt-4 class="md:w-1/2"
+          = f.label :content_type, class: "font-semibold leading-none mb-4"
+          = f.select :content_type, PublicationContent::TYPE_OPTIONS, class: "leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
+      .md:flex.items-center.mt-8
+        .w-full.flex.flex-col
+          = f.label :description, class: "font-semibold leading-none"
+          = f.text_field :description, class: "text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
+      .div.hidden
+        = f.label :publication_id
+        = f.text_field :publication_id, value: @publication.id
+      .flex.justify-center
+          = f.submit  class: "mt-6 w-1/2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+

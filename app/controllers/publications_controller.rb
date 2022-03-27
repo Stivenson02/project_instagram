@@ -39,7 +39,7 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
-        format.html { redirect_to profiles_url(@publication), notice: "Publication was successfully updated." }
+        format.html { redirect_to edit_publication_url(@publication), notice: "Publication was successfully updated." }
         format.json { render :show, status: :ok, location: @publication }
       else
         format.html { render :edit, status: :unprocessable_entity }

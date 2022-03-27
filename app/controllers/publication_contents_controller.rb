@@ -32,30 +32,36 @@ class PublicationContentsController < ApplicationController
       save_content = true
     end
 
-    if save_content
-      @publication_content = PublicationContent.new(publication_content_params)
-      @publication_content.order=order
-      respond_to do |format|
-        if @publication_content.save
-          format.turbo_stream do
-            render turbo_stream:[
-              turbo_stream.update('publication_content_form',
-                                  partial: "publication_contents/form",
-                                  locals:{publication_content: PublicationContent.new}),
-              turbo_stream.prepend('publication_contents',
-                                   partial: "publication_contents/publication_content",
-                                   locals:{publication_content: @publication_content})
-            ]
-          end
-
-          format.html { redirect_to edit_publication_url(@publication_content.publication), notice: "Publication content was successfully created." }
-          format.json { render :show, status: :created, location: @publication_content.publication }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @publication_content.errors, status: :unprocessable_entity }
+    @publication_content = PublicationContent.new(publication_content_params)
+    @publication_content.order = order
+    respond_to do |format|
+      if @publication_content.save && save_content
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('publication_content_form',
+                                partial: "publication_contents/form",
+                                locals: { publication_content: PublicationContent.new }),
+            turbo_stream.prepend('publication_contents',
+                                 partial: "publication_contents/publication_content",
+                                 locals: { publication_content: @publication_content })
+          ]
         end
+        format.html { redirect_to edit_publication_url(@publication_content.publication), notice: "Publication content was successfully created." }
+        format.json { render :show, status: :created, location: @publication_content.publication }
+      else
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('publication_content_form',
+                                partial: "publication_contents/form",
+                                locals: { publication_content: PublicationContent.new }),
+            turbo_stream.update('notice', "Fill in all the fields")
+          ]
+        end
+        format.html { redirect_to edit_publication_url(@publication_content.publication), notice: "Publication content was successfully created." }
+        format.json { render json: @publication_content.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /publication_contents/1 or /publication_contents/1.json
@@ -77,11 +83,11 @@ class PublicationContentsController < ApplicationController
     @publication_content.destroy
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream:[
+        render turbo_stream: [
           turbo_stream.remove(@publication_content),
           turbo_stream.update('publication_content_form',
                               partial: "publication_contents/form",
-                              locals:{publication_content: PublicationContent.new}),
+                              locals: { publication_content: PublicationContent.new }),
         ]
       end
       format.html { redirect_to edit_publication_url(@publication_content.publication), notice: "Publication content was successfully destroyed." }

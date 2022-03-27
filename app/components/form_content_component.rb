@@ -10,8 +10,16 @@ class FormContentComponent < ViewComponent::Base
     @publication = publication
   end
 
-  def new
-    @publication_content = PublicationContent.new
+  def show_form
+    @show=false
+    if @publication.post?
+      @show=true if @publication.publication_contents.count < 9
+    elsif @publication.reel?
+      @show=true if @publication.publication_contents.count < 2
+    elsif @publication.history
+      @show=true if @publication.publication_contents.count < 1
+    end
+    @show
   end
 
 end
