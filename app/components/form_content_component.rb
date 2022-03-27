@@ -16,7 +16,7 @@ class FormContentComponent < ViewComponent::Base
       @show=true if @publication.publication_contents.count < 9
     elsif @publication.reel?
       @show=true if @publication.publication_contents.count < 2
-    elsif @publication.history
+    elsif @publication.history?
       @show=true if @publication.publication_contents.count < 1
     end
     @show
