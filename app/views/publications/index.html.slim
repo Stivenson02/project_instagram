@@ -1,73 +1,38 @@
+
+
+
 ==render "nav", profile: current_user.profile
-.bg-gray-100
-  .flex.bg-gray-100
-    .w-full.text-center.mt-12.bg-gray-100
-
-  .grid.grid-cols-3.gap-4
-    .flex-1.text-center.px-4.py-2.m-2
-      img.w-full src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
-    .flex-1.text-center.px-4.py-2.m-2
-      img.w-full src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
-    .flex-1.text-center.px-4.py-2.m-2
-      img.w-full src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
-    .flex-1.text-center.px-4.py-2.m-2
-      img.w-full src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
-    .flex-1.text-center.px-4.py-2.m-2
-      img.w-full src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
-    .flex-1.text-center.px-4.py-2.m-2
-      img.w-full src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
-    .flex-1.text-center.px-4.py-2.m-2
-      img.w-full src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
-    .flex-1.text-center.px-4.py-2.m-2
-      img.w-full src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
-    .flex-1.text-center.px-4.py-2.m-2
-      img.w-full src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" /
+==render (ShowPublicationsComponent.new(publications: @publications, current_user: current_user))
 
 
 
+/ a href="#" data-reflex="click->Counter#increment" data-step="1" data-count="#{@count.to_i}"
+/   ="Increment #{@count.to_i}"
 
+/ h1 Listing publications
 
-
-
-
-
-
-
--if current_user
-  =button_to "Cerrar Sesion", destroy_user_session_path, method: :delete
-
-p.notice
-  ="#{notice}"
-p.alert
-  ="#{alert}"
-
-a href="#" data-reflex="click->Counter#increment" data-step="1" data-count="#{@count.to_i}"
-  ="Increment #{@count.to_i}"
-
-h1 Listing publications
-
-table
-  thead
-    tr
-      th Name
-      th Description
-      th Type
-      th User
-      th
-      th
-      th
-
-  tbody
-    - @publications.each do |publication|
-      tr
-        td = publication.name
-        td = publication.description
-        td = publication.publication_type
-        td = publication.user
-        td = link_to 'Show', publication
-        td = link_to 'Edit', edit_publication_path(publication)
-        td = link_to 'Destroy', publication, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Publication', new_publication_path
+/ table
+/   thead
+/     tr
+/       th Name
+/       th Description
+/       th Type
+/       th User
+/       th
+/       th
+/       th
+/
+/   tbody
+/     - @publications.each do |publication|
+/       tr
+/         td = publication.name
+/         td = publication.description
+/         td = publication.publication_type
+/         td = publication.user
+/         td = link_to 'Show', publication
+/         td = link_to 'Edit', edit_publication_path(publication)
+/         td = link_to 'Destroy', publication, data: { confirm: 'Are you sure?' }, method: :delete
+/
+/ br
+/
+/ = link_to 'New Publication', new_publication_path

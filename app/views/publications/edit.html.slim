@@ -13,5 +13,5 @@ div
           - @publication.publication_contents.order(order: :asc).each do |publication_content|
             ==render publication_content
       #publication_contents_counter
-        == render "publication_contents/form", publication_content: PublicationContent.new
+        == render "publication_contents/form", publication_content: PublicationContent.new, publication:@publication
         / == render(FormContentComponent.new(publication_content: PublicationContent.new, publication: @publication))

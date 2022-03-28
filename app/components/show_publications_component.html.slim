@@ -1,0 +1,43 @@
+.bg-gray-100
+  .flex.bg-gray-100
+    .w-full.text-center.mt-12.bg-gray-100
+
+  .grid.grid-cols-3.gap-4
+    - @publications.each do |publication|
+      -if show_post(publication)
+        .flex-1.text-center.px-4.py-2.m-2
+          img.h-60.w-full.object-cover.object-top src="#{url_for(show_img(publication))}"
+          .grid.grid-cols-3.gap-4
+           div
+             h1 like
+           div
+             -if show_edit(publication)
+               = link_to 'Edit', edit_publication_path(publication), class: "mt-6 w-1/2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+           div
+            = link_to 'Show', publication, class: "mt-6 w-1/2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+
+
+/ table
+/   thead
+/     tr
+/       th Name
+/       th Description
+/       th Type
+/       th User
+/       th
+/       th
+/       th
+/
+/   tbody
+/     - @publications.each do |publication|
+/       tr
+/         td = publication.name
+/         td = publication.description
+/         td = publication.publication_type
+/         td = publication.user
+/         td = link_to 'Show', publication
+/         td = link_to 'Edit', edit_publication_path(publication)
+/         td = link_to 'Destroy', publication, data: { confirm: 'Are you sure?' }, method: :delete
+/
+/ br
+

@@ -22,4 +22,8 @@ class FormContentComponent < ViewComponent::Base
     @show
   end
 
+  def show_end (publication)
+    publication.publication_contents.any?
+  end
+
 end

@@ -84,6 +84,9 @@
       a href="/publications/new"
         .flex.inline-flex.ml-2.mt-1
           h3.text-sm.font-medium.text-gray-700.mr-2 NEW
+- unless @profile.nil?
+  -if @profile.user.publications.count > 0
+    ==render (ShowPublicationsComponent.new(publications: @profile.user.publications, current_user: current_user))
 / <div class="w-full">
 /   <% if notice.present? %>
 /     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
