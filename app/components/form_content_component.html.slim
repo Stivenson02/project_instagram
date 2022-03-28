@@ -19,4 +19,9 @@
         = f.text_field :publication_id, value: @publication.id
       .flex.justify-center
           = f.submit  class: "mt-6 w-1/2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+  .grid.grid-cols-3
+    .col-start-2.col-span-2
+      - if @publication.publication_contents.count > 0
+        a href="/"
+          button class="mt-6 w-1/2 px-4 py-2 font-bold text-white bg-green-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline" THE END PUBLICATION
 

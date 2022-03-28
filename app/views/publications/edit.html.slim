@@ -15,7 +15,3 @@ div
       #publication_contents_counter
         == render "publication_contents/form", publication_content: PublicationContent.new
         / == render(FormContentComponent.new(publication_content: PublicationContent.new, publication: @publication))
-    .grid.grid-cols-3
-      .col-start-2.col-span-2
-        a href="/"
-          button class="mt-6 w-1/2 px-4 py-2 font-bold text-white bg-green-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline" THE END PUBLICATION
