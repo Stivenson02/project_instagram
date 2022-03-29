@@ -1,45 +1,69 @@
-.relative.p-4.w-full.max-w-2xl.h-full.md:h-auto
-  /! Modal content
-  .relative.bg-white.rounded-lg.shadow.dark:bg-gray-700
-    /! Modal header
-    .flex.justify-between.items-start.p-5.rounded-t.border-b.dark:border-gray-600
-      h3.text-xl.font-semibold.text-gray-900.lg:text-2xl.dark:text-white
-        | Terms of Service
-      button.text-gray-400.bg-transparent.hover:bg-gray-200.hover:text-gray-900.rounded-lg.text-sm.ml-auto.inline-flex.items-center.dark:hover:bg-gray-600.dark:hover:text-white class="p-1.5" data-modal-toggle="defaultModal" type="button"
-        svg.w-5.h-5 fill="currentColor" viewbox=("0 0 20 20") xmlns="http://www.w3.org/2000/svg"
-          path clip-rule="evenodd" d=("M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z") fill-rule="evenodd"
-    /! Modal body
-    #default-carousel.relative data-carousel="static" 
-      /! Carousel wrapper
-      .overflow-hidden.relative.h-56.rounded-lg.sm:h-64.xl:h-80.2xl:h-96
-        /! Item 1
-        .hidden.duration-700.ease-in-out data-carousel-item="" 
-          span.absolute.text-2xl.font-semibold.text-white.sm:text-3xl.dark:text-gray-800 class=("top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2")  First Slide
-          img.block.absolute.w-full alt="..." class=("top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2") src="https://images.unsplash.com/photo-1506765515384-028b60a970df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFubmVyfGVufDB8fDB8fA%3D%3D&w=1000&q=80" /
-        /! Item 2
-        .hidden.duration-700.ease-in-out data-carousel-item="" 
-          img.block.absolute.w-full alt="..." class=("top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2") src="https://images.unsplash.com/photo-1506765515384-028b60a970df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFubmVyfGVufDB8fDB8fA%3D%3D&w=1000&q=80" /
-        /! Item 3
-        .hidden.duration-700.ease-in-out data-carousel-item="" 
-          img.block.absolute.w-full alt="..." class=("top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2") src="https://images.unsplash.com/photo-1506765515384-028b60a970df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFubmVyfGVufDB8fDB8fA%3D%3D&w=1000&q=80" /
-      /! Slider indicators
-      .flex.absolute.bottom-5.z-30.space-x-3 class=("left-1/2 -translate-x-1/2") 
-        button.w-3.h-3.rounded-full aria-current="false" aria-label=("Slide 1") data-carousel-slide-to="0" type="button" 
-        button.w-3.h-3.rounded-full aria-current="false" aria-label=("Slide 2") data-carousel-slide-to="1" type="button" 
-        button.w-3.h-3.rounded-full aria-current="false" aria-label=("Slide 3") data-carousel-slide-to="2" type="button" 
-      /! Slider controls
-      button.flex.absolute.top-0.left-0.z-30.justify-center.items-center.px-4.h-full.cursor-pointer.group.focus:outline-none data-carousel-prev="" type="button" 
-        span.inline-flex.justify-center.items-center.w-8.h-8.rounded-full.sm:w-10.sm:h-10.group-focus:ring-4.group-focus:ring-white.group-focus:outline-none class=("bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70") 
-          svg.w-5.h-5.text-white.sm:w-6.sm:h-6.dark:text-gray-800 fill="none" stroke="currentColor" viewbox=("0 0 24 24") xmlns="http://www.w3.org/2000/svg" 
-            path d=("M15 19l-7-7 7-7") stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-          span.hidden Previous
-      button.flex.absolute.top-0.right-0.z-30.justify-center.items-center.px-4.h-full.cursor-pointer.group.focus:outline-none data-carousel-next="" type="button" 
-        span.inline-flex.justify-center.items-center.w-8.h-8.rounded-full.sm:w-10.sm:h-10.group-focus:ring-4.group-focus:ring-white.group-focus:outline-none class=("bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70") 
-          svg.w-5.h-5.text-white.sm:w-6.sm:h-6.dark:text-gray-800 fill="none" stroke="currentColor" viewbox=("0 0 24 24") xmlns="http://www.w3.org/2000/svg" 
-            path d=("M9 5l7 7-7 7") stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-          span.hidden Next
-    /! Modal footer
-    .flex.items-center.p-6.space-x-2.rounded-b.border-t.border-gray-200.dark:border-gray-600
-      button.text-white.bg-blue-700.hover:bg-blue-800.focus:ring-4.focus:outline-none.focus:ring-blue-300.font-medium.rounded-lg.text-sm.px-5.text-center.dark:bg-blue-600.dark:hover:bg-blue-700.dark:focus:ring-blue-800 class="py-2.5" data-modal-toggle="defaultModal" type="button"  I accept
-      button.text-gray-500.bg-white.hover:bg-gray-100.focus:ring-4.focus:outline-none.focus:ring-blue-300.rounded-lg.border.border-gray-200.text-sm.font-medium.px-5.hover:text-gray-900.focus:z-10.dark:bg-gray-700.dark:text-gray-300.dark:border-gray-500.dark:hover:text-white.dark:hover:bg-gray-600.dark:focus:ring-gray-600 class="py-2.5" data-modal-toggle="defaultModal" type="button"  Decline
+
+/! Modal toggle
+div data-controller="showpublic"
+  button.block.text-white.bg-blue-500.hover:bg-blue-800.focus:ring-4.focus:outline-none.focus:ring-blue-300.font-medium.rounded-full.text-sm.px-5.text-center.dark:bg-blue-600.dark:hover:bg-blue-700.dark:focus:ring-blue-800 class="py-2.5" data-action="click->showpublic#show" type="button"
+    | show
+
+  div data-showpublic-target="btnshow" class="hidden"
+    .overflow-y-auto.overflow-x-hidden.fixed.top-0.right-0.left-0.z-50.w-full.md:inset-0.h-modal.md:h-full
+      .relative.p-4.w-full.max-w-7xl.h-full.md:h-auto
+        /! Modal content
+        .relative.bg-white.rounded-lg.shadow.dark:bg-gray-700
+          /! Modal header
+          .flex.justify-between.items-start.p-5.rounded-t.border-b.dark:border-gray-600
+            h3.text-xl.font-semibold.text-gray-900.lg:text-2xl.dark:text-white
+              = @publication.name
+            button.text-gray-400.bg-transparent.hover:bg-gray-200.hover:text-gray-900.rounded-lg.text-sm.ml-auto.inline-flex.items-center.dark:hover:bg-gray-600.dark:hover:text-white class="p-1.5" data-action="click->showpublic#off_show" type="button"
+              svg.w-5.h-5 fill="currentColor" viewbox=("0 0 20 20") xmlns="http://www.w3.org/2000/svg"
+                path clip-rule="evenodd" d=("M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z") fill-rule="evenodd"
+          /! Modal body
+                
+          /! Carousel wrapper
+          #carouselMDExample.carousel.slide.carousel-fade
+            /! Slides
+            .carousel-inner.mb-5.shadow-1-strong.rounded-3
+              -@publication.publication_contents.each do |publication_content|
+                .hidden data-showpublic-target="carousel"
+                  =publication_content.id
+                .carousel-item id="publication_content_#{publication_content.id}"
+                  img.d-block.w-100 alt="..." src="#{url_for(publication_content.file)}" style="height: 500px;" /
+
+            /! Slides
+            /! Controls
+            button.carousel-control-prev data-mdb-slide="prev" data-mdb-target="#carouselMDExample" type="button"
+              span.carousel-control-prev-icon aria-hidden="true"
+              span.visually-hidden Previous
+            button.carousel-control-next data-mdb-slide="next" data-mdb-target="#carouselMDExample" type="button"
+              span.carousel-control-next-icon aria-hidden="true"
+              span.visually-hidden Next
+            /! Controls
+            /! Thumbnails
+            #list_imgs.carousel-indicators style=("margin-bottom: -20px;")
+              -@publication.publication_contents.each do |publication_content|
+                ==render(ModalThumbnailsPostComponent.new(publication_content: publication_content))
+
+            /! Thumbnails
+          / .carousel.slide.relative data-bs-ride="carousel" data-controller="carousel"
+          /
+          /   .carousel-inner.relative.w-full.overflow-hidden#publication_content_all
+          /     -@publication.publication_contents.each do |publication_content|
+          /       .hidden data-showpublic-target="carousel" data-carousel-target="carousel" id="test"
+          /         =publication_content.id
+          /       .carousel-item.relative.float-left.w-full id="publication_content_#{publication_content.id}"
+          /         img.block.w-full alt="..." src="#{url_for(publication_content.file)}" style="height: 500px;"/
+          /         .carousel-caption.hidden.md:block.absolute.text-center
+          /           h5.text-xl First slide label
+          /           p Some representative placeholder content for the first slide.
+          /
+          /   button.carousel-control-prev.absolute.top-0.bottom-0.flex.items-center.justify-center.p-0.text-center.border-0.hover:outline-none.hover:no-underline.focus:outline-none.focus:no-underline.left-0 data-bs-slide="prev" data-bs-target="#carouselExampleCaptions" type="button"
+          /     span.carousel-control-prev-icon.inline-block.bg-no-repeat aria-hidden="true"
+          /     span.visually-hidden Previous
+          /   button.carousel-control-next.absolute.top-0.bottom-0.flex.items-center.justify-center.p-0.text-center.border-0.hover:outline-none.hover:no-underline.focus:outline-none.focus:no-underline.right-0 data-bs-slide="next" data-bs-target="#carouselExampleCaptions" type="button"
+          /     span.carousel-control-next-icon.inline-block.bg-no-repeat aria-hidden="true"
+          /     span.visually-hidden Next
+          /! Modal footer
+          .flex.items-center.p-6.space-x-2.rounded-b.border-t.border-gray-200.dark:border-gray-600
+            button.text-white.bg-blue-700.hover:bg-blue-800.focus:ring-4.focus:outline-none.focus:ring-blue-300.font-medium.rounded-lg.text-sm.px-5.text-center.dark:bg-blue-600.dark:hover:bg-blue-700.dark:focus:ring-blue-800 class="py-2.5" data-action="click->showpublic#off_show" type="button"  Close
+
+
 

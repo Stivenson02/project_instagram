@@ -2,7 +2,6 @@
 
 class ModalShowPostComponent < ViewComponent::Base
   attr_reader :publication
-
   def initialize(publication:)
     @publication = publication
   end
