@@ -19,49 +19,24 @@ div data-controller="showpublic"
           /! Modal body
                 
           /! Carousel wrapper
-          #carouselMDExample.carousel.slide.carousel-fade
+          #carouselMDExample.carousel.slide.carousel-fade.grid.grid-cols-3
             /! Slides
             .carousel-inner.mb-5.shadow-1-strong.rounded-3
               -@publication.publication_contents.each do |publication_content|
                 .hidden data-showpublic-target="carousel"
                   =publication_content.id
                 .carousel-item id="publication_content_#{publication_content.id}"
-                  img.d-block.w-100 alt="..." src="#{url_for(publication_content.file)}" style="height: 500px;" /
+                  img.d-block.w-100.w-full alt="..." src="#{url_for(publication_content.file)}" style="height: 500px;" /
 
             /! Slides
-            /! Controls
-            button.carousel-control-prev data-mdb-slide="prev" data-mdb-target="#carouselMDExample" type="button"
-              span.carousel-control-prev-icon aria-hidden="true"
-              span.visually-hidden Previous
-            button.carousel-control-next data-mdb-slide="next" data-mdb-target="#carouselMDExample" type="button"
-              span.carousel-control-next-icon aria-hidden="true"
-              span.visually-hidden Next
-            /! Controls
+            div
+            div.text-left
+              div = "dskdjs"
             /! Thumbnails
-            #list_imgs.carousel-indicators style=("margin-bottom: -20px;")
+            #list_imgs.carousel-indicators.col-span-3 style=("margin-bottom: -20px;")
               -@publication.publication_contents.each do |publication_content|
                 ==render(ModalThumbnailsPostComponent.new(publication_content: publication_content))
 
-            /! Thumbnails
-          / .carousel.slide.relative data-bs-ride="carousel" data-controller="carousel"
-          /
-          /   .carousel-inner.relative.w-full.overflow-hidden#publication_content_all
-          /     -@publication.publication_contents.each do |publication_content|
-          /       .hidden data-showpublic-target="carousel" data-carousel-target="carousel" id="test"
-          /         =publication_content.id
-          /       .carousel-item.relative.float-left.w-full id="publication_content_#{publication_content.id}"
-          /         img.block.w-full alt="..." src="#{url_for(publication_content.file)}" style="height: 500px;"/
-          /         .carousel-caption.hidden.md:block.absolute.text-center
-          /           h5.text-xl First slide label
-          /           p Some representative placeholder content for the first slide.
-          /
-          /   button.carousel-control-prev.absolute.top-0.bottom-0.flex.items-center.justify-center.p-0.text-center.border-0.hover:outline-none.hover:no-underline.focus:outline-none.focus:no-underline.left-0 data-bs-slide="prev" data-bs-target="#carouselExampleCaptions" type="button"
-          /     span.carousel-control-prev-icon.inline-block.bg-no-repeat aria-hidden="true"
-          /     span.visually-hidden Previous
-          /   button.carousel-control-next.absolute.top-0.bottom-0.flex.items-center.justify-center.p-0.text-center.border-0.hover:outline-none.hover:no-underline.focus:outline-none.focus:no-underline.right-0 data-bs-slide="next" data-bs-target="#carouselExampleCaptions" type="button"
-          /     span.carousel-control-next-icon.inline-block.bg-no-repeat aria-hidden="true"
-          /     span.visually-hidden Next
-          /! Modal footer
           .flex.items-center.p-6.space-x-2.rounded-b.border-t.border-gray-200.dark:border-gray-600
             button.text-white.bg-blue-700.hover:bg-blue-800.focus:ring-4.focus:outline-none.focus:ring-blue-300.font-medium.rounded-lg.text-sm.px-5.text-center.dark:bg-blue-600.dark:hover:bg-blue-700.dark:focus:ring-blue-800 class="py-2.5" data-action="click->showpublic#off_show" type="button"  Close
 

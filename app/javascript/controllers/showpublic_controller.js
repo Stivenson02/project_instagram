@@ -8,6 +8,11 @@ export default class extends ApplicationController {
     static targets = ["btnshow", "carousel"]
 
     show() {
+        let elements = document.getElementsByClassName("carousel-item active")
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.remove("active")
+        }
+
         let arrayele=[]
         this.btnshowTargets.forEach(el => {
             el.classList.remove("hidden")
