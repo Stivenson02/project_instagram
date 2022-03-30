@@ -9,37 +9,14 @@
         .flex-1.text-center.px-4.py-2.m-2
           img.h-60.w-full.object-cover.object-top src="#{url_for(show_img(publication))}"
           .grid.grid-cols-3.gap-4
-           div
-            a href="#" data-reflex="click->Counter#increment" data-step="1" data-count="#{@count.to_i}"
-              ="Like #{@count.to_i}"
-           div
-             -if show_edit(publication)
-               = link_to 'Edit', edit_publication_path(publication), class: "mt-6 w-1/2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-           div
-            ==render(ModalShowPostComponent.new(publication: publication))
-            / =link_to 'Show', publication, class: "mt-6 w-1/2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+            div id="publications-like-#{publication.id}"
+             =render "publications/likes", publication:publication
+             / a href="#" data-reflex="click->Counter#increment" data-step="1" data-count="#{@count.to_i}"
+             /  ="Like #{@count.to_i}"
+            div
+              -if show_edit(publication)
+                = link_to 'Edit', edit_publication_path(publication), class: "mt-6 w-1/2 px-4 py-2 font-bold text-white bg-green-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+            div
+              ==render(ModalShowPostComponent.new(publication: publication))
 
-/ table
-/   thead
-/     tr
-/       th Name
-/       th Description
-/       th Type
-/       th User
-/       th
-/       th
-/       th
-/
-/   tbody
-/     - @publications.each do |publication|
-/       tr
-/         td = publication.name
-/         td = publication.description
-/         td = publication.publication_type
-/         td = publication.user
-/         td = link_to 'Show', publication
-/         td = link_to 'Edit', edit_publication_path(publication)
-/         td = link_to 'Destroy', publication, data: { confirm: 'Are you sure?' }, method: :delete
-/
-/ br
 

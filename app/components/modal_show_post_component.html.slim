@@ -1,8 +1,8 @@
 
 /! Modal toggle
 div data-controller="showpublic"
-  button.block.text-white.bg-blue-500.hover:bg-blue-800.focus:ring-4.focus:outline-none.focus:ring-blue-300.font-medium.rounded-full.text-sm.px-5.text-center.dark:bg-blue-600.dark:hover:bg-blue-700.dark:focus:ring-blue-800 class="py-2.5" data-action="click->showpublic#show" type="button"
-    | show
+  button class=" px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline" data-action="click->showpublic#show" type="button"
+    i class="fa fa-eye" aria-hidden="true"
 
   div data-showpublic-target="btnshow" class="hidden"
     .overflow-y-auto.overflow-x-hidden.fixed.top-0.right-0.left-0.z-50.w-full.md:inset-0.h-modal.md:h-full

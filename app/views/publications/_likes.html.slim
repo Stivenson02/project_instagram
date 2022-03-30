@@ -1,0 +1,11 @@
+div.grid.grid-cols-2
+    div
+      ="Likes #{publication.publication_likes.count}"
+    div
+      =render(LikesComponent.new(publication: publication, user_id: current_user.id))
+
+
+
+
+
+

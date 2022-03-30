@@ -1,0 +1,20 @@
+-unless show_form
+  = form_with url: "/publications/#{@publication.id}/publication_like", method: :post do |form|
+      button type="submit"
+        i class="fa fa-heartbeat"
+-else
+  button class="text-red-300"
+    i class="fa fa-heart"
+
+/ -if @publication.publication_likes.count > 0
+/   -if @publication.publication_likes.where(user_id: @user_id).any?
+/     button class="text-red-300"
+/       i class="fa fa-heart"
+/   -else
+/     = form_with url: "/publications/#{@publication.id}/publication_like", method: :post do |form|
+/       button type="submit"
+/         i class="fa fa-heartbeat"
+/ -else
+/ = form_with url: "/publications/#{@publication.id}/publication_like", method: :post do |form|
+/   button type="submit"
+/     i class="fa fa-heartbeat"

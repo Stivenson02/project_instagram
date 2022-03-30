@@ -1,4 +1,5 @@
 class PublicationContentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_publication_content, only: %i[ show edit update destroy ]
 
   # GET /publication_contents or /publication_contents.json
