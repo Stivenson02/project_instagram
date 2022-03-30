@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.append("comment_contents_#{@comment.publication.id}",
+            turbo_stream.prepend("comment_contents_#{@comment.publication.id}",
                                  partial: "comments/comment",
                                  locals: { comment: @comment }),
             turbo_stream.update("form-comment-description-#{@comment.publication.id}",

@@ -33,9 +33,9 @@ div data-controller="showpublic"
             div.text-left
               div id="form-comment-description-#{@publication.id}"
                 =render "comments/form", publication:@publication
-              div id="comment_contents_#{@publication.id}"
+              div.overflow-auto.h-80.m-2 id="comment_contents_#{@publication.id}"
                 -if @publication.comments.count > 0
-                  - @publication.comments.order(id: :asc).each do |comment|
+                  - @publication.comments.order(id: :desc).each do |comment|
                     == render "comments/comment", comment: comment
 
 
