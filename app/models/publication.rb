@@ -1,6 +1,7 @@
 class Publication < ApplicationRecord
   belongs_to :user
   has_many :publication_contents
+  has_many :comments
 
   validates :publication_type, inclusion: { in: ['post', 'reel', 'history'] }
 

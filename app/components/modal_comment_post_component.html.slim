@@ -1,0 +1,10 @@
+/ ==render "comments/form",  locals: {comment: new_comment, publication: @publication}
+= form_with url: "/publications/#{@publication.id}/comments", method: :post do |form|
+  .my-5
+    = form.label :description
+    = form.text_area :description
+  .inline
+    = form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"
+
+
+

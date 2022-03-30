@@ -31,7 +31,13 @@ div data-controller="showpublic"
             /! Slides
             div
             div.text-left
-              div = "dskdjs"
+              =render(ModalCommentPostComponent.new(publication: @publication))
+              #comment_contents
+                -if @publication.comments.count > 0
+                  - @publication.comments.order(id: :asc).each do |comment|
+                    == render "comments/comment", comment: comment
+
+
             /! Thumbnails
             #list_imgs.carousel-indicators.col-span-3 style=("margin-bottom: -20px;")
               -@publication.publication_contents.each do |publication_content|
