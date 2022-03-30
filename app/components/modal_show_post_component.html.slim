@@ -31,8 +31,9 @@ div data-controller="showpublic"
             /! Slides
             div
             div.text-left
-              =render(ModalCommentPostComponent.new(publication: @publication))
-              #comment_contents
+              div id="form-comment-description-#{@publication.id}"
+                =render "comments/form", publication:@publication
+              div id="comment_contents_#{@publication.id}"
                 -if @publication.comments.count > 0
                   - @publication.comments.order(id: :asc).each do |comment|
                     == render "comments/comment", comment: comment

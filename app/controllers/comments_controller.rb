@@ -28,9 +28,12 @@ class CommentsController < ApplicationController
       if @comment.save
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.update('comment_contents',
+            turbo_stream.append("comment_contents_#{@comment.publication.id}",
                                  partial: "comments/comment",
-                                 locals: { comment: @comment })
+                                 locals: { comment: @comment }),
+            turbo_stream.update("form-comment-description-#{@comment.publication.id}",
+                                partial: "comments/form",
+                                locals: { publication: @comment.publication } )
           ]
         end
         format.html { redirect_to publication_content_url(@comment), notice: "Comment was successfully updated." }
