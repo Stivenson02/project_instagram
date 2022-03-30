@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_profile, only: %i[ show edit update destroy ]
+  before_action :set_profile, only: %i[ edit update destroy ]
 
   # GET /profiles or /profiles.json
   def index
@@ -9,6 +9,11 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1 or /profiles/1.json
   def show
+    @profile = Profile.where(user_id: params[:id])
+    unless @profile.any?
+      redirect_to profiles_url
+    end
+    @profile= @profile.first
   end
 
   # GET /profiles/new
