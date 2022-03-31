@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :comments
   has_one :profile
   has_many :publication_likes
+  has_many :follows
 end

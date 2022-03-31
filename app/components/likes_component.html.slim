@@ -3,8 +3,15 @@
       button type="submit"
         i class="fa fa-heartbeat"
 -else
-  button class="text-red-300"
-    i class="fa fa-heart"
+  = button_to  [publication_like(@publication).publication, publication_like(publication)], data: { confirm: 'Are you sure?' }, method: :delete do
+          i class="fa fa-heart"
+
+  / = button_to  (publication_like(@publication)), method: :delete, data: { turbo_method: :delete } , class:"text-red-300" do
+
+
+
+  / button class="text-red-300"
+  /   i class="fa fa-heart"
 
 / -if @publication.publication_likes.count > 0
 /   -if @publication.publication_likes.where(user_id: @user_id).any?

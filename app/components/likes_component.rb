@@ -16,4 +16,8 @@ class LikesComponent < ViewComponent::Base
     show
   end
 
+  def publication_like(publication)
+    @publication_like=publication.publication_likes.where(user_id: @user_id).first
+  end
+
 end

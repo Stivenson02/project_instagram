@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_30_164028) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_30_215335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_164028) do
     t.datetime "updated_at", null: false
     t.index ["publication_id"], name: "index_comments_on_publication_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -109,6 +118,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_164028) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "publications"
   add_foreign_key "comments", "users"
+  add_foreign_key "follows", "users"
+  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "publication_contents", "publications"
   add_foreign_key "publication_likes", "publications"

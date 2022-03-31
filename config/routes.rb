@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-
-  resources :profiles
+  resources :profiles do
+    resources :follow, only: [:create, :show, :destroy]
+  end
   resources :publication_contents
   resources :publications do
     resources :comments

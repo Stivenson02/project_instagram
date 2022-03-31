@@ -28,6 +28,7 @@ class PublicationLikeController < ApplicationController
   end
 
   def destroy
+    binding.pry
   end
 
   private
