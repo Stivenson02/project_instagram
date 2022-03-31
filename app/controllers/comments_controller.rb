@@ -72,7 +72,7 @@ class CommentsController < ApplicationController
   private
 
   def set_publication
-    @publication = current_user.publications.find(params[:publication_id])
+    @publication = Publication.find(params[:publication_id])
   end
 
   # Use callbacks to share common setup or constraints between actions.

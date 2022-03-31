@@ -1,0 +1,7 @@
+-unless show_follow
+    = form_with url: "/profiles/#{@profile.id}/follow", method: :post do |form|
+      button type="submit" class= "bg-gray-200 hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded"
+        | Follow
+-else
+    = button_to [@profile, follow], data: { confirm: 'Are you sure?' }, method: :delete, class: "bg-blue-200 hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded" do
+        | Following

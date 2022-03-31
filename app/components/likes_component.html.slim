@@ -3,7 +3,7 @@
       button type="submit"
         i class="fa fa-heartbeat"
 -else
-  = button_to  [publication_like(@publication).publication, publication_like(publication)], data: { confirm: 'Are you sure?' }, method: :delete do
+  = button_to  [publication_like(@publication).publication, publication_like(publication)], data: { confirm: 'Are you sure?' }, method: :delete, class:"text-red-300" do
           i class="fa fa-heart"
 
   / = button_to  (publication_like(@publication)), method: :delete, data: { turbo_method: :delete } , class:"text-red-300" do

@@ -10,7 +10,7 @@ class ShowPublicationsComponent < ViewComponent::Base
   end
 
   def show_post(publication)
-    publication.publication_contents.count <= 0 ? true : publication.post?
+    publication.publication_contents.count <= 0 ? show_edit(publication) : publication.post?
   end
 
   def show_img(publication)

@@ -1,6 +1,7 @@
 class PublicationLikeController < ApplicationController
   before_action :authenticate_user!
   before_action :set_publication
+  before_action :set_publication_like, only: [:show, :destroy]
 
   def create
     @publication_like = PublicationLike.new({ publication_id: params[:publication_id], user_id: current_user.id })
@@ -28,12 +29,28 @@ class PublicationLikeController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    respond_to do |format|
+      if @publication_like.destroy
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("publications-like-#{@publication_like.publication.id}",
+                                partial: "publications/likes",
+                                locals: { publication: @publication_like.publication } )
+          ]
+        end
+        format.html { redirect_to publication_content_url(@publication_like), notice: "Comment was successfully updated." }
+        format.json { render :show, status: :ok, location: @publication_like }
+
+      end
+    end
   end
 
   private
 
   def set_publication
     @publication = Publication.find(params[:publication_id])
+  end
+  def set_publication_like
+    @publication_like =  @publication.publication_likes.find(params[:id])
   end
 end
