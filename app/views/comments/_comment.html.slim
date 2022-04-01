@@ -1,0 +1,17 @@
+.bg-white.p-2.rounded.mt-1.border-b.border-grey.cursor-pointer.hover:bg-gray-100.mr-2
+  .grid.grid-cols-5
+    div
+      ==render(ImgProfileComponent.new(profile: comment.user.profile))
+    div.col-span-3
+      =comment.description
+    div
+      | like
+
+
+
+
+
+/<div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-gray-100 mr-2">
+/  <h1><%=comment.description%></h1>
+/</div>
+
