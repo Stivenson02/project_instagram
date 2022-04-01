@@ -12,16 +12,17 @@
                 ==render "follow", profile: @profile
           -else
             = link_to 'Add profile', new_profile_path, class: "bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded"
-      .text-left.pl-4.pt-3
-        span.text-base.font-semibold.text-gray-700.mr-2
-          b = @profile.user.publications.where(publication_type: 'post').count
-          |  posts
-        span.text-base.font-semibold.text-gray-700.mr-2
-          b =Follow.where(follower_id: @profile.user.id).count
-          |  followers
-        span.text-base.font-semibold.text-gray-700
-          b = @profile.user.follows.count
-          |  following
+      -unless @profile.nil?
+        .text-left.pl-4.pt-3
+          span.text-base.font-semibold.text-gray-700.mr-2
+            b = @profile.user.publications.where(publication_type: 'post').count
+            |  posts
+          span.text-base.font-semibold.text-gray-700.mr-2
+            b =Follow.where(follower_id: @profile.user.id).count
+            |  followers
+          span.text-base.font-semibold.text-gray-700
+            b = @profile.user.follows.count
+            |  following
       .text-left.pl-4.pt-3
         span.text-lg.font-bold.text-gray-700.mr-2 Information
       .text-left.pl-4.pt-3
